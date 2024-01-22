@@ -1,3 +1,69 @@
 
+<form [formGroup]="registerForm" (ngSubmit)="obSubmit()" novalidate>
 
-<app-form></app-form>
+    <!-- Full name start -->
+
+    <div formGroupName="fullName">
+
+        <div class="mb-3">
+
+            <label [ngClass]="{error:submitted && registerForm['fullName']['controls'].firstName.errors}">First name</label>
+
+        <input type="text" class="form-control" formControlName="firstName"
+        
+        [ngClass]="{error:submitted && registerForm['fullName']['controls'].firstName.errors}" >
+
+
+        <!-- xatolik uchun -->
+
+        <div class="invalid-feedback" *ngIf="submitted && registerForm['fullName']['controls'].firstName.errors?.required">
+        <sup>*</sup>ismni kiritish majburiy
+
+    </div>
+
+
+        <div class="invalid-feedback" *ngIf="submitted && registerForm['fullName']['controls'].firstName.errors?.minlength">
+            <sup>* </sup>Kamida 4 ta harf bo'lsin
+    
+        </div>
+
+        <div class="invalid-feedback" *ngIf="submitted && registerForm['fullName']['controls'].firstName.error?.pattern"></div>
+
+        <sup>*</sup> Bo'sh kiritish mumkin emas !
+  </div>
+
+
+
+  
+  <div class="mb-3">
+
+    <label [ngClass]="{error:submitted && registerForm['fullName'] ['controls'].lastName.error}">Last name</label>
+
+<input type="text" class="form-control" formControlName="lastName"
+
+[ngClass]="{error:submitted && registerForm['fullName'] ['controls'].lastName.errors}" >
+
+
+<!-- xatolik uchun -->
+
+<div class="invalid-feedback" *ngIf="submitted && registerForm['fullName']['controls'].lastName.errors?.required">
+<sup>*</sup>Familiyani kiritish majburiy
+
+</div>
+
+</div>
+
+
+    </div>
+
+    <!-- FullName tugadi -->
+
+
+
+    <input formControlName="email" placeholder="emailni kiriting">
+    <input formControlName="phoneNumber" placeholder="Telegon raqam">
+    <button type="submit">Register</button>
+
+
+
+</form>
