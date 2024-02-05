@@ -1,0 +1,41 @@
+<div class="container">
+    <div *ngIf="form.errors" class="alert alert-danger">Login yoki parol xato</div>
+
+    <form [formGroup]="form" (ngSubmit)="sigIn()">
+
+        <div formGroupName="account"></div>
+
+        <div class="form-group">
+            <label for="login">Login</label>
+            <input type="text" id="login" class="form-control" formControlName="login">
+
+
+            <div *ngIf="login.touched && login.invalid" class="alert alert-danger">
+                <div *ngIf="login.pending">Noyoblikka tekshirilyapti...</div>
+
+                <div *ngIf="login.errors.required">Login kiritish majburiy</div>
+                <div *ngIf="login.errors.minlength">Login kamida {{login.errors.minlength.requiredLength}} ta majburiy
+                </div>
+                <div *ngIf="login.errors.noSpace">Bo'sh joy bo'lishi mumkin emas</div>
+                <div *ngIf="login.errors.isTaken">Bu login band !</div>
+
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="parol">parol</label>
+            <input type="password" id="parol" class="form-control" formControlName="password">
+            <div *ngIf="password.touched && password.invalid" class="alert alert-danger">parol Kiritish shart</div>
+
+        </div> <br>
+
+        <button class="btn btn-primary">Ro'yhatdan o'tish</button>
+
+
+
+
+
+    </form>
+</div>
